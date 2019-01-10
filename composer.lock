@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "277f6ff35cefe08103189b4ce03de6e6",
+    "content-hash": "67592e27e5cbeb8e968ccc803ec35252",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -59,23 +59,67 @@
             "time": "2017-12-20T14:37:45+00:00"
         },
         {
-            "name": "atnic/laravel-generator",
-            "version": "v0.9.3",
+            "name": "atnic/eloquent-filters",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Atnic/laravel-generator.git",
-                "reference": "cc65e7ed55d25a0e93a09641b71f23f26a3a034d"
+                "url": "https://github.com/Atnic/eloquent-filters.git",
+                "reference": "2f92a7155926f71607ead5142a643ee846f412f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atnic/laravel-generator/zipball/cc65e7ed55d25a0e93a09641b71f23f26a3a034d",
-                "reference": "cc65e7ed55d25a0e93a09641b71f23f26a3a034d",
+                "url": "https://api.github.com/repos/Atnic/eloquent-filters/zipball/2f92a7155926f71607ead5142a643ee846f412f1",
+                "reference": "2f92a7155926f71607ead5142a643ee846f412f1",
                 "shasum": ""
             },
             "require": {
+                "illuminate/contracts": "^5.5",
+                "illuminate/database": "^5.5",
+                "illuminate/support": "^5.5",
+                "php": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Smartisan\\Filters\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohammed Isa",
+                    "email": "mohd.itcs@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Filterable Eloquents.",
+            "homepage": "https://github.com/atnic/eloquent-filters",
+            "keywords": [
+                "eloquent-filters",
+                "laravel"
+            ],
+            "time": "2019-01-10T07:43:48+00:00"
+        },
+        {
+            "name": "atnic/laravel-generator",
+            "version": "v0.9.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Atnic/laravel-generator.git",
+                "reference": "f57297a8e220507655cba284e0d87817c0d74ea8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Atnic/laravel-generator/zipball/f57297a8e220507655cba284e0d87817c0d74ea8",
+                "reference": "f57297a8e220507655cba284e0d87817c0d74ea8",
+                "shasum": ""
+            },
+            "require": {
+                "atnic/eloquent-filters": "^2.2",
                 "laravel/framework": "^5.5",
                 "laravel/passport": ">=4.0",
-                "mohd-isa/eloquent-filters": "^2.1",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -110,7 +154,7 @@
                 "laravel",
                 "package"
             ],
-            "time": "2019-01-07T21:42:16+00:00"
+            "time": "2019-01-10T08:11:07+00:00"
         },
         {
             "name": "barryvdh/laravel-cors",
@@ -1574,50 +1618,6 @@
                 "server"
             ],
             "time": "2018-11-21T21:42:43+00:00"
-        },
-        {
-            "name": "mohd-isa/eloquent-filters",
-            "version": "2.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mohd-isa/eloquent-filters.git",
-                "reference": "03fc074e6543210f4726551975583cc97c2f4aa3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mohd-isa/eloquent-filters/zipball/03fc074e6543210f4726551975583cc97c2f4aa3",
-                "reference": "03fc074e6543210f4726551975583cc97c2f4aa3",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^5.5",
-                "illuminate/database": "^5.5",
-                "illuminate/support": "^5.5",
-                "php": "^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Smartisan\\Filters\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohammed Isa",
-                    "email": "mohd.itcs@gmail.com"
-                }
-            ],
-            "description": "Laravel 5 Filterable Eloquents.",
-            "homepage": "https://github.com/mohd-isa/eloquent-filters",
-            "keywords": [
-                "eloquent-filters",
-                "laravel"
-            ],
-            "time": "2018-11-09T16:57:59+00:00"
         },
         {
             "name": "monolog/monolog",

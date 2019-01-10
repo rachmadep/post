@@ -56,7 +56,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return true;
+        return $post->user_id == $user->id;
     }
 
     /**
@@ -68,6 +68,6 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return true;
+        return $post->user_id == $user->id;
     }
 }

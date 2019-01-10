@@ -63,7 +63,7 @@ class PostControllerTest extends TestCase
         if (!Route::has('api.posts.show')) { $this->expectNotToPerformAssertions(); return; }
         $user = factory(User::class)->create();
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         $this->actingAs($user, 'api');
         $response = $this->getJson(route('api.posts.show', [ $post->getKey() ]));
@@ -85,7 +85,7 @@ class PostControllerTest extends TestCase
         if (!Route::has('api.posts.update')) { $this->expectNotToPerformAssertions(); return; }
         $user = factory(User::class)->create();
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         $this->actingAs($user, 'api');
         $response = $this->putJson(route('api.posts.update', [ $post->getKey() ]), factory(Post::class)->make()->toArray());
@@ -107,7 +107,7 @@ class PostControllerTest extends TestCase
         if (!Route::has('api.posts.destroy')) { $this->expectNotToPerformAssertions(); return; }
         $user = factory(User::class)->create();
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         $this->actingAs($user, 'api');
         $response = $this->deleteJson(route('api.posts.destroy', [ $post->getKey() ]));

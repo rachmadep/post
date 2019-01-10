@@ -91,7 +91,7 @@ class CommentControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $post = factory(Post::class)->create();
-        $comment = $post->comments()->save(factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey() ]));
+        $comment = $post->comments()->save(factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey(), 'user_id' => $user->id ]));
 
         $this->actingAs($user);
         $response = $this->get(route('posts.comments.show', [ $post->getKey(), $comment->getKey() ]));
@@ -114,7 +114,7 @@ class CommentControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $post = factory(Post::class)->create();
-        $comment = $post->comments()->save(factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey() ]));
+        $comment = $post->comments()->save(factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey(), 'user_id' => $user->id ]));
 
         $this->actingAs($user);
         $response = $this->get(route('posts.comments.edit', [ $post->getKey(), $comment->getKey()  ]));
@@ -137,7 +137,7 @@ class CommentControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $post = factory(Post::class)->create();
-        $comment = $post->comments()->save(factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey() ]));
+        $comment = $post->comments()->save(factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey(), 'user_id' => $user->id ]));
 
         $this->actingAs($user);
         $response = $this->put(route('posts.comments.update', [ $post->getKey(), $comment->getKey()  ]), factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey() ])->toArray());
@@ -161,7 +161,7 @@ class CommentControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $post = factory(Post::class)->create();
-        $comment = $post->comments()->save(factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey() ]));
+        $comment = $post->comments()->save(factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey(), 'user_id' => $user->id ]));
 
         $this->actingAs($user);
         $response = $this->delete(route('posts.comments.destroy', [ $post->getKey(), $comment->getKey()  ]));

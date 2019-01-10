@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Barryvdh\Cors\HandleCors;
 use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -28,6 +29,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Passport::routes();
+        Passport::routes(null, [ 'middleware' => HandleCors::class, 'domain' => 'api.'.config('app.domain') ]);
     }
 }

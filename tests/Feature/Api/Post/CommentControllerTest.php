@@ -68,7 +68,7 @@ class CommentControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $post = factory(Post::class)->create();
-        $comment = $post->comments()->save(factory(Comment::class)->make([ 'post_'.$post->getKeyName() => $post->getKey() ]));
+        $comment = $post->comments()->save(factory(Comment::class)->make([ 'post_'.$post->getKeyName() => $post->getKey(), 'user_id' => $user->id ]));
 
         $this->actingAs($user, 'api');
         $response = $this->getJson(route('api.posts.comments.show', [ $post->getKey(), $comment->getKey() ]));
@@ -91,7 +91,7 @@ class CommentControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $post = factory(Post::class)->create();
-        $comment = $post->comments()->save(factory(Comment::class)->make([ 'post_'.$post->getKeyName() => $post->getKey() ]));
+        $comment = $post->comments()->save(factory(Comment::class)->make([ 'post_'.$post->getKeyName() => $post->getKey(), 'user_id' => $user->id ]));
 
         $this->actingAs($user, 'api');
         $response = $this->putJson(route('api.posts.comments.update', [ $post->getKey(), $comment->getKey()  ]), factory(Comment::class)->make([ $post->getForeignKey() => $post->getKey() ])->toArray());
@@ -114,7 +114,7 @@ class CommentControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $post = factory(Post::class)->create();
-        $comment = $post->comments()->save(factory(Comment::class)->make([ 'post_'.$post->getKeyName() => $post->getKey() ]));
+        $comment = $post->comments()->save(factory(Comment::class)->make([ 'post_'.$post->getKeyName() => $post->getKey(), 'user_id' => $user->id ]));
 
         $this->actingAs($user, 'api');
         $response = $this->deleteJson(route('api.posts.comments.destroy', [ $post->getKey(), $comment->getKey()  ]));

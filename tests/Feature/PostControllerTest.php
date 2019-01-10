@@ -84,7 +84,7 @@ class PostControllerTest extends TestCase
         if (!Route::has('posts.show')) { $this->expectNotToPerformAssertions(); return; }
         $user = factory(User::class)->create();
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         $this->actingAs($user);
         $response = $this->get(route('posts.show', [ $post->getKey() ]));
@@ -106,7 +106,7 @@ class PostControllerTest extends TestCase
         if (!Route::has('posts.edit')) { $this->expectNotToPerformAssertions(); return; }
         $user = factory(User::class)->create();
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         $this->actingAs($user);
         $response = $this->get(route('posts.edit', [ $post->getKey() ]));
@@ -128,7 +128,7 @@ class PostControllerTest extends TestCase
         if (!Route::has('posts.update')) { $this->expectNotToPerformAssertions(); return; }
         $user = factory(User::class)->create();
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         $this->actingAs($user);
         $response = $this->put(route('posts.update', [ $post->getKey() ]), factory(Post::class)->make()->toArray());
@@ -151,7 +151,7 @@ class PostControllerTest extends TestCase
         if (!Route::has('posts.destroy')) { $this->expectNotToPerformAssertions(); return; }
         $user = factory(User::class)->create();
 
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->create(['user_id' => $user->id]);
 
         $this->actingAs($user);
         $response = $this->delete(route('posts.destroy', [ $post->getKey() ]));

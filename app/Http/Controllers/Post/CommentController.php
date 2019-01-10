@@ -144,7 +144,7 @@ class CommentController extends Controller
      */
     public function create(Post $post)
     {
-        $this->authorize('update', $post);
+//        $this->authorize('update', $post);
         $this->authorize('create', 'App\Comment');
 
         return response()->view('posts.comments.create', [
@@ -165,7 +165,7 @@ class CommentController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        $this->authorize('update', $post);
+//        $this->authorize('update', $post);
         $this->authorize('create', 'App\Comment');
         $request->validate(self::rules($request, $post)['store']);
 
@@ -229,7 +229,7 @@ class CommentController extends Controller
     public function edit(Post $post, Comment $comment)
     {
         $post->comments()->findOrFail($comment->getKey());
-        $this->authorize('update', $post);
+//        $this->authorize('update', $post);
         $this->authorize('update', $comment);
 
         return response()->view('posts.comments.edit', [
@@ -254,7 +254,7 @@ class CommentController extends Controller
     {
         $post->comments()->findOrFail($comment->getKey());
 
-        $this->authorize('update', $post);
+//        $this->authorize('update', $post);
         $this->authorize('update', $comment);
         $request->validate(self::rules($request, $post, $comment)['update']);
 
@@ -294,7 +294,7 @@ class CommentController extends Controller
     public function destroy(Post $post, Comment $comment)
     {
         $post->comments()->findOrFail($comment->getKey());
-        $this->authorize('update', $post);
+//        $this->authorize('update', $post);
         $this->authorize('delete', $comment);
         $comment->delete();
 

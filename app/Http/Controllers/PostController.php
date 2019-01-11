@@ -172,7 +172,6 @@ class PostController extends Controller
                 $post->{$key} = $request->{$key};
             }
         }
-        $post->user_id = Auth::user()->id;
         $post->save();
 
         if (request()->filled('redirect') && starts_with(request()->redirect, request()->root()))

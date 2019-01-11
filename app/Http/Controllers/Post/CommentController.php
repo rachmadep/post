@@ -182,7 +182,6 @@ class CommentController extends Controller
             }
         }
         $comment->post()->associate($post);
-        $comment->user_id = Auth::user()->id;
         $comment->save();
 
         if (request()->filled('redirect') && starts_with(request()->redirect, request()->root()))

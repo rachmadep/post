@@ -90,7 +90,6 @@ class CommentController extends Controller
             }
         }
         $comment->post()->associate($post);
-        $comment->user_id = Auth::user()->id;
         $comment->save();
 
         return (new Resource($comment))->response()->setStatusCode(201);

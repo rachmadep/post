@@ -81,7 +81,6 @@ class PostController extends Controller
                 $post->{$key} = $request->{$key};
             }
         }
-        $post->user_id = Auth::user()->id;
         $post->save();
 
         return (new Resource($post))->response()->setStatusCode(201);

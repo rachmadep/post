@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::apiResource('posts', 'Api\PostController', [ 'as' => 'api' ]);
 Route::apiResource('posts.comments', 'Api\Post\CommentController', [ 'as' => 'api' ]);
+Route::apiResource('users', 'Api\UserController', [ 'as' => 'api' ]);

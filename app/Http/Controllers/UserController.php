@@ -181,6 +181,9 @@ class UserController extends Controller
                 $user->{$key} = $request->{$key};
             }
         }
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
 
         if (request()->filled('redirect') && starts_with(request()->redirect, request()->root()))

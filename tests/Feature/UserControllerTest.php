@@ -21,7 +21,7 @@ class UserControllerTest extends TestCase
         if (!Route::has('users.index')) { $this->expectNotToPerformAssertions(); return; }
         $user = factory(User::class)->create();
 
-//        $users = factory(User::class, 5)->create();
+        $users = factory(User::class, 5)->create();
 
         $this->actingAs($user);
         $response = $this->get(route('users.index'));

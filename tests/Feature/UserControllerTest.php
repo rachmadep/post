@@ -64,7 +64,14 @@ class UserControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this->actingAs($user);
-        $response = $this->post(route('users.store'), factory(User::class)->make()->toArray());
+//        $response = $this->post(route('users.store'), factory(User::class)->make()->toArray());
+        $response = $this->post(route('users.store'), array_merge(
+            factory(User::class)->make()->toArray(),
+            [ 'password' => 'password' ],
+            [ 'password_confirmation' => 'password' ]
+        ));
+
+//        dd(session()->all());
         if ($response->exception) {
             $this->expectOutputString('');
             $this->setOutputCallback(function () use($response) { return $response->exception; });

@@ -44,7 +44,12 @@ class UserControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this->actingAs($user, 'api');
-        $response = $this->postJson(route('api.users.store'), factory(User::class)->make()->toArray());
+        $response = $this->postJson(route('api.users.store'), array_merge(
+            factory(User::class)->make()->toArray(),
+            [ 'password' => 'password' ],
+            [ 'password_confirmation' => 'password' ]
+        ));
+
         if ($response->exception) {
             $this->expectOutputString('');
             $this->setOutputCallback(function () use($response) { return $response->exception; });

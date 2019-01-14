@@ -45,12 +45,13 @@ class UserController extends Controller
             'index' => [
                 'user' => [
                     //[ 'name' => 'parent', 'label' => ucwords(__('users.parent')), 'column' => 'name' ], // Only support belongsTo, hasOne
-                    ['name' => 'name', 'label' => ucwords(__('users.name')) ],
+                    [ 'name' => 'name', 'label' => ucwords(__('users.name')) ],
+                    [ 'name' => 'email', 'label' => ucwords(__('users.email')) ],
                 ]
             ],
             'show' => [
                 'user' => [
-                    //[ 'name' => 'parent', 'label' => ucwords(__('users.parent')), 'column' => 'name' ], // Only support belongsTo, hasOne
+//                    [ 'name' => 'posts', 'label' => ucwords(__('users.posts')), 'column' => 'post' ], // Only support belongsTo, hasOne
                     [ 'name' => 'name', 'label' => ucwords(__('users.name')) ],
                     [ 'name' => 'email', 'label' => ucwords(__('users.email')) ],
                 ]

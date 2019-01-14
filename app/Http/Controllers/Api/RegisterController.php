@@ -15,16 +15,6 @@ class RegisterController extends Controller
 {
     public $successStatus = 200;
     /**
-    * Instantiate a new controller instance.
-    *
-    * @return void
-    */
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
-
-    /**
      * Invoke single action controller.
      *
      * @return Resource
@@ -74,13 +64,14 @@ class RegisterController extends Controller
             'password' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()], 401);
+            return response()->json(['error'=>$validator->errors()]);
         }
+//        dd($request);
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->accessToken;
+        $success['token'] =  $user->createToken('name')->accessToken;
         $success['name'] =  $user->name;
 
         return response()->json(['success'=>$success], $this->successStatus);

@@ -40,6 +40,7 @@ class Post extends Model
 
     /** @var string $connection */
     //protected $connection = '';
+    protected $appends = ['comments_count'];
 
     // TODO: Define other default value and relations
     public function user() {
@@ -48,5 +49,9 @@ class Post extends Model
 
     public function comments() {
         return $this->hasMany(Comment::class);
+    }
+
+    public function getCommentsCountAttribute() {
+        return $this->comments()->count();
     }
 }

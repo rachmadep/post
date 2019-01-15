@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Validator;
  */
 class RegisterController extends Controller
 {
-    public $successStatus = 200;
     /**
      * Invoke single action controller.
      *
@@ -64,9 +63,8 @@ class RegisterController extends Controller
             'password' => 'required',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()]);
+            return response()->json(['error'=>$validator->errors()], 401);
         }
-//        dd($request);
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
@@ -74,7 +72,7 @@ class RegisterController extends Controller
         $success['token'] =  $user->createToken('name')->accessToken;
         $success['name'] =  $user->name;
 
-        return response()->json(['success'=>$success], $this->successStatus);
+        return response()->json(['success'=>$success]);
     }
 
     /**

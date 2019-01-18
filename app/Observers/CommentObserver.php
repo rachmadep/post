@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Comment;
+use App\Notifications\EditComment;
 use App\Notifications\NewComment;
 use Illuminate\Support\Facades\Notification;
 
@@ -46,7 +47,14 @@ class CommentObserver
      */
     public function updated(Comment $comment)
     {
-        //
+        $user = $comment->post->user;
+        $post = $comment->post;
+        $users = $post->comments->map(function ($comment){
+            return $comment->user;
+        });
+        $users->push($user);
+
+        Notification::send($users, new EditComment($comment));
     }
 
     /**

@@ -9,14 +9,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
-use NotificationChannels\OneSignal\OneSignalWebButton;
 
-class NewComment extends Notification
+class EditComment extends Notification
 {
     use Queueable;
 
     public $comment;
-
     /**
      * Create a new notification instance.
      *
@@ -38,9 +36,10 @@ class NewComment extends Notification
         return [OneSignalChannel::class];
     }
 
-    public function toOneSignal($notifiable){
+    public function toOneSignal($notifiable)
+    {
         return OneSignalMessage::create()
-            ->subject($this->comment->user->name." new comment")
+            ->subject($this->comment->user->name." edited Comment")
             ->body($this->comment->comment)
             ->url(url('/'));
     }

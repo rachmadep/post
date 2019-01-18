@@ -35,9 +35,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function routeNotificationForOneSignal()
+    {
+        return ['tags' => ['key' => 'email', 'relation' => '=', 'value' => $this->email ]];
+    }
+
     public function posts() {
         return $this->hasMany(Post::class);
     }
+
     public function comments() {
         return $this->hasMany(Comment::class);
     }

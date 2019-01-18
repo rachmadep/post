@@ -12,6 +12,7 @@
         "atnic/laravel-generator": "^0.9.4",
         "barryvdh/laravel-cors": "^0.11.2",
         "fideloper/proxy": "^4.0",
+        "laravel-notification-channels/onesignal": "^1.2",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0"
     },

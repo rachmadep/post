@@ -11,7 +11,7 @@ use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
 use NotificationChannels\OneSignal\OneSignalWebButton;
 
-class NewComment extends Notification
+class NewComment extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -42,7 +42,7 @@ class NewComment extends Notification
         return OneSignalMessage::create()
             ->subject($this->comment->user->name." new comment")
             ->body($this->comment->comment)
-            ->url(url('/'));
+            ->url(url(config('app.root_url')));
     }
 
     /**

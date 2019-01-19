@@ -7,8 +7,9 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use NotificationChannels\OneSignal\OneSignalChannel;
+use NotificationChannels\OneSignal\OneSignalMessage;
 
-class ReminderPost extends Notification
+class ReminderPost extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -30,7 +31,7 @@ class ReminderPost extends Notification
      */
     public function via($notifiable)
     {
-        return [OneSignalChannel::class, 'mail'];
+        return [OneSignalChannel::class];
     }
 
     public function toOneSignal($notifiable)
@@ -38,7 +39,7 @@ class ReminderPost extends Notification
         return OneSignalMessage::create()
             ->subject("Remainder to create post on Jala Story")
             ->body('Share your story')
-            ->url(url('/'));
+            ->url(url(config('app.root_url')));
     }
 
     /**
@@ -51,7 +52,7 @@ class ReminderPost extends Notification
     {
         return (new MailMessage)
                     ->line('Remainder to create post on Jala Story')
-                    ->action('Share your story', url('/'))
+                    ->action('Share your story', url(config('app.root_url')))
                     ->line('Thank you for using our application!');
     }
 

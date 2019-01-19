@@ -10,7 +10,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
 
-class NewPost extends Notification
+class NewPost extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -42,7 +42,7 @@ class NewPost extends Notification
         return OneSignalMessage::create()
             ->subject($this->post->user->name." new Post")
             ->body($this->post->post)
-            ->url(url('/'));
+            ->url(url(config('app.root_url')));
     }
 
     /**

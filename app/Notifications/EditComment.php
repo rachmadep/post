@@ -10,7 +10,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use NotificationChannels\OneSignal\OneSignalChannel;
 use NotificationChannels\OneSignal\OneSignalMessage;
 
-class EditComment extends Notification
+class EditComment extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -41,7 +41,7 @@ class EditComment extends Notification
         return OneSignalMessage::create()
             ->subject($this->comment->user->name." edited Comment")
             ->body($this->comment->comment)
-            ->url(url('/'));
+            ->url(url(config('app.root_url')));
     }
 
     /**

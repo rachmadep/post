@@ -35,6 +35,9 @@ class CommentObserver
             return $comment->user;
         });
         $users->push($user);
+        $users = $users->reject(function ($user) use($comment) {
+            return $user = $user->where('id', $comment->user_id);
+        });
 
         Notification::send($users, new NewComment($comment));
     }
@@ -53,6 +56,9 @@ class CommentObserver
             return $comment->user;
         });
         $users->push($user);
+        $users = $users->reject(function ($user) use($comment) {
+            return $user = $user->where('id', $comment->user_id);
+        });
 
         Notification::send($users, new EditComment($comment));
     }

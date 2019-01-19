@@ -31,6 +31,9 @@ class PostObserver
     public function created(Post $post)
     {
         $users = User::all();
+        $users = $users->reject(function ($user) use($post) {
+            return $user = $user->where('id', $post->user_id);
+        });
         Notification::send($users, new NewPost($post));
     }
 

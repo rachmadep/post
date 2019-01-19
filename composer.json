@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.1.3",
         "atnic/laravel-generator": "^0.9.4",
+        "barryvdh/laravel-async-queue": "^0.7.2",
         "barryvdh/laravel-cors": "^0.11.2",
         "fideloper/proxy": "^4.0",
         "laravel-notification-channels/onesignal": "^1.2",

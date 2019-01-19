@@ -32,7 +32,7 @@ class PostObserver
     {
         $users = User::all();
         $users = $users->reject(function ($user) use($post) {
-            return $user == $post->user_id;
+            return $user->id == $post->user_id;
         });
         Notification::send($users, new NewPost($post));
     }

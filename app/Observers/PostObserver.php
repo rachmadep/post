@@ -2,8 +2,11 @@
 
 namespace App\Observers;
 
+use App\Notifications\NewPost;
 use App\Post;
+use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class PostObserver
 {
@@ -27,7 +30,8 @@ class PostObserver
      */
     public function created(Post $post)
     {
-        //
+        $users = User::all();
+        Notification::send($users, new NewPost($post));
     }
 
     /**

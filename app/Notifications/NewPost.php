@@ -23,7 +23,7 @@ class NewPost extends Notification
      */
     public function __construct(Post $post)
     {
-        $this->post->post;
+        $this->post = $post;
     }
 
     /**

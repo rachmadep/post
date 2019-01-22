@@ -26,10 +26,10 @@ class CommentController extends Controller
     {
         return [
             'store' => [
-                'comment' => 'required|string|max:255',
+                'comment' => 'required|string',
             ],
             'update' => [
-                'comment' => 'string|max:255',
+                'comment' => 'string',
             ]
         ];
     }

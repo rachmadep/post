@@ -39,6 +39,8 @@ class CommentObserver
             return $user->id == $comment->user_id;
         });
 
+        if (app()->runningUnitTests())
+            Notification::fake();
         Notification::send($users, new NewComment($comment));
     }
 
@@ -60,6 +62,8 @@ class CommentObserver
             return $user->id == $comment->user_id;
         });
 
+        if (app()->runningUnitTests())
+            Notification::fake();
         Notification::send($users, new EditComment($comment));
     }
 

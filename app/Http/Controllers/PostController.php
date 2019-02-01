@@ -95,11 +95,11 @@ class PostController extends Controller
         return [
             'store' => [
                 //'parent_id' => 'required|exists:parents,id',
-                'post' => 'required|string|max:255',
+                'post' => 'required|string',
             ],
             'update' => [
                 //'parent_id' => 'exists:parents,id',
-                'post' => 'string|max:255',
+                'post' => 'string',
             ]
         ];
     }

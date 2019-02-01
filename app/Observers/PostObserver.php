@@ -34,6 +34,9 @@ class PostObserver
         $users = $users->reject(function ($user) use($post) {
             return $user->id == $post->user_id;
         });
+
+        if (app()->runningUnitTests())
+            Notification::fake();
         Notification::send($users, new NewPost($post));
     }
 

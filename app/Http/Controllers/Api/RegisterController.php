@@ -45,7 +45,7 @@ class RegisterController extends Controller
     /**
      * Register api
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
 
     public function register(Request $request)
@@ -72,7 +72,8 @@ class RegisterController extends Controller
         $success['token'] =  $user->createToken('name')->accessToken;
         $success['name'] =  $user->name;
 
-        return response()->json(['success'=>$success]);
+//        return response()->json(['success'=>$success]);
+        return (new Resource($success))->response()->setStatusCode(201);
     }
 
     /**

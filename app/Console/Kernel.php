@@ -28,7 +28,15 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-        $schedule->job(new RemindPost)->timezone('Asia/Jakarta')->dailyAt('16:00');
+        $schedule->job(new RemindPost)
+            ->timezone('Asia/Jakarta')
+            ->weekdays()
+            ->dailyAt('15:45');
+
+        $schedule->job(new RemindPost)
+            ->timezone('Asia/Jakarta')
+            ->saturdays()
+            ->dailyAt('13:45');
     }
 
     /**

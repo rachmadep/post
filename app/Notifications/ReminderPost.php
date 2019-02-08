@@ -37,8 +37,8 @@ class ReminderPost extends Notification implements ShouldQueue
     public function toOneSignal($notifiable)
     {
         return OneSignalMessage::create()
-            ->subject("Remainder to create post on Jala Story")
-            ->body('Share your story')
+            ->subject("Reminder to go home!")
+            ->body("15 minutes is more than enough to share your story")
             ->url(url(config('app.root_url')));
     }
 

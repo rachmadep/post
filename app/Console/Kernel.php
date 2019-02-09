@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
         $schedule->job(new RemindPost)
             ->timezone('Asia/Jakarta')
             ->saturdays()
-            ->dailyAt('13:45');
+            ->at('13:45');
     }
 
     /**
